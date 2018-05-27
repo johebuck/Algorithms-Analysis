@@ -1,0 +1,30 @@
+\documentclass[12pt]{article}
+
+%Packages add more power to LaTeX documents
+\usepackage{fullpage} %Otherwise there will be a lot of wasted space at the margins
+\usepackage{enumerate} %For the multi-part problem in example #4
+\usepackage{amsthm} %For proof environment
+\usepackage{amsmath} %For math symbols (like the black square)
+\usepackage{graphicx,float,wrapfig} %Including graphics like PDFs and some image formats.
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+\author{John E. Buckley III}
+\title{CSCI 430: Program 3}
+
+
+\begin{document}
+\maketitle
+
+\textbf{Implementation:} \newline
+\tab Counting-Sort is different in implementation compared to the previous algorithms observed earlier this semester. This is because Counting sort uses an array for temporary working storage. This is a good thing and a bad thing. This is good because this makes the running time of Counting-Sort $\Theta(n)$. Counting-Sort assumes that each input element is within the range of 0 to k, and as long as k is $O(n)$ then the running time will be $\Theta(n)$. This is bad because Counting-Sort is only efficient if the range of input data is not significantly greater than the number of objects to be sorted. This is also bad because Counting-Sort takes up a lot of storage. \newline \newline
+
+\textbf{Testing Expectations:} \newline
+\tab I expect Counting-Sort to be the most effective algorithm to be tested yet because the running time is $\Theta(n)$.I also expect the graphs to look different then ones previously created, I expect 3 horizontal lines to overlap each other. \newline \newline
+
+\textbf{Testing Observations and Analysis:} \newline
+\tab As expected, Counting-Sort out preformed all previous sorting algorithms. The graph came out very linear, give or take a hundredth of a second, however not all 3 lines overlapped each other. Reversed ordered data, and ordered data overlapped each other however random data happened to take just slightly longer, but nonetheless still linear. \newline \newline
+
+\textbf{ Take-Away:} \newline
+\tab A perfect world will never exist. When you finally come across a sorting algorithm that runs in $\Theta(n)$ time, and you think it can't get any better, you finally realize that not all is right in the world because that algorithm takes up a massive amount of storage compared to other algorithms. The choice at this point is, do I trade run time for less storage or do I trade more storage for faster run time.
+
+\end{document}
