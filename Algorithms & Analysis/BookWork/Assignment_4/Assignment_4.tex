@@ -1,0 +1,83 @@
+\documentclass[12pt]{article}
+
+%Packages add more power to LaTeX documents
+\usepackage{fullpage} %Otherwise there will be a lot of wasted space at the margins
+\usepackage{enumerate} %For the multi-part problem in example #4
+\usepackage{amsthm} %For proof environment
+\usepackage{amsmath} %For math symbols (like the black square)
+\usepackage{graphicx,float,wrapfig} %Including graphics like PDFs and some image formats.
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+\author{John E. Buckley III}
+\title{CSCI 430: Homework 4}
+
+
+\begin{document}
+\maketitle
+
+\section{2.3-3}
+\textbf{Base Step:} \newline
+If $n=2$ then $T(2)=2$ and $2log2=2$ Thus, $T(n)=2log2$ \newline \newline
+\textbf{Hypothesis Step:} \newline
+Assuming $T(n)=nlogn$ is true if $n=2^k$ for some integer $k>1$ \newline \newline
+\textbf{Induction Step:} \newline
+If $n=2^{k+1}$ then $T(2^{k+1})$ \newline
+$=2T(2^{k+1}/2)+2^{k+1}$ \newline
+$=2T(2^k)+2^{k+1}$ \newline
+$=2(2^klog2^k)+2^{k+1}$ \newline
+$=2^{k+1}((log2^k)+1)$ \newline
+$=2^{k+1}log2^{k+1}$ 
+
+\section{2.3-4}
+$ T(n) = \begin{cases} \Theta(1) & \text{if } n = 1, \\ T(n-1) + C(n-1) & \text{otherwise}. \end{cases} $ \newline \newline
+Where $C(n)$ is the time needed to insert an element into a sorted array of $n$ elements.
+
+\section{2.3-5}
+Recursive-Binary-Search(A,p,q,v): \newline
+1\tab if $p<q$ \newline
+2\tab \tab return NIL \newline
+3\tab half$=\left \lfloor ((p+q)/2) \right \rfloor$ \newline
+4\tab if $(v==A[half])$ \newline
+5\tab \tab return half \newline
+6\tab else if $(v<A[half])$ \newline
+7\tab \tab Recursive-Binary-Search(A,p,q,v) \newline
+8\tab else \newline
+9\tab \tab Recursive-Binary-Search(A,half$+$1,q,v) \newline \newline
+After the first iteration we have N/2 items remaining, after the second iteration we have N/4 remaining, and so on, hence N/$2^k$. Worst case: Last iteration occurs when N/$2^k\geq1$ and N/$2^{k_1}<1$ item remaining. take log of both sides to get $2^k\leq N$ and $2^{k+1}>N$. Number of iterations is K$\leq$logN and K$>$logN-1, thus the worst case running time is $\Theta(logN)$.
+
+\section{2.3-6}
+No, because it still needs to shift all elements after it to the right, which is linear in the worst case, even if it finds the position in log time.
+
+\section{2-1a}
+Since Insertion-Sort runs in $\Theta(n^2)$ worst-case time, then each list with length k will take $\Theta(n^2)$ worst-case time. To sort $n\over k$: $n\over k $ $ \ast k^2 = nk$ thus $\Theta(nk)$.
+
+\section{2-1b}
+Merging $n\over k$ into $n\over 2k$ then into $n\over 4k$ and so on takes $\Theta(n)$ time and since we have lg$n \over k$ of these merges then merging into one list will take $\Theta$ $(nlg$ ($n\over k$)) time.
+
+\section{2-2a}
+We must prove that A' consists of the elements in A and that they are in sorted order.
+
+\section{2-2b}
+\textbf{Loop Invariant:} \newline
+Prior to each iteration, the elements in A[j...n] are an alteration of the elements that were originally in A[j...n] such that the first element is the smallest among them. \newline \newline
+\textbf{Initialization:} \newline
+Initially the subarray contains only one element, A[n], whish is the smallest element of the subarray. \newline \newline
+\textbf{Maintenance:} \newline
+At every iteration we compare A[j] with A[j-1] and the smaller of the two becomes A[j-1]. The length of the subarray grows by one with each iteration and the first element is the smallest of the subarray. \newline \newline
+\textbf{Termination:} \newline
+The loop terminates when j=i+1. The length of the subarray grows by one, the first element is the smallest in the subarray, and we swap A[i+1] with A[i].
+
+\section{2-2c}
+\textbf{Loop Invariant:} \newline
+Prior to each iteration, the subarray A[1...i-1] consists of the elements in the subarray A[i...n] but in sorted order. \newline \newline
+\textbf{Initialization:} \newline
+Initially the subarray is empty, which obviously makes it the smallest element of the subarray. \newline \newline
+\textbf{Maintenance:} \newline
+At every iteration, the elements that are in A[1...i-1] with be the smallest value of the previous iteration, thus A[1...i-1] will be in sorted order and smaller than A[i...n]. \newline \newline
+\textbf{Termination:}
+The loop terminates when i=A.length, which, at that point means the array A[1...n] will be in sorted order. 
+
+\section{2-2d}
+Bubblesort will iterate over the whole array every time for every element, thus $\Theta(n^2)$ just like the worst-case time for insertion-sort. However, the constants for bubblesort are much larger than insertion-sort, so insertion-sort still runs faster.
+
+\end{document}

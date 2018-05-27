@@ -1,0 +1,50 @@
+\documentclass[12pt]{article}
+
+%Packages add more power to LaTeX documents
+\usepackage{fullpage} %Otherwise there will be a lot of wasted space at the margins
+\usepackage{enumerate} %For the multi-part problem in example #4
+\usepackage{amsthm} %For proof environment
+\usepackage{amsmath} %For math symbols (like the black square)
+\usepackage{graphicx,float,wrapfig} %Including graphics like PDFs and some image formats.
+
+
+\author{John E. Buckley III}
+\title{CSCI 430: Homework 1}
+
+
+\begin{document}
+\maketitle
+
+\section{1.1-1}
+A Library would be a good example, books would need to be sorted by title, or authors last name, or genre, etc.
+
+\section{1.1-2}
+Time is usually always counted as a measure of efficiency. How long to accomplish a task realistically.
+
+\section{1.1-3}
+The advantages of a BST is that you can keep the cost of inserting, deleting, and searching at logarithmic time.
+The disadvantages of a BST is that the shape of the tree depends on the order of insertions and that key comparisons can quickly increase the run time.
+    
+\section{1.1-4}
+They are similar because they both want to minimize the distance traveled. 
+They differ because The Traveling Salesman (TSP) is an NP-complete problem while the shortest path is known polynomial time. Shortest path is just finding the shortest distance between two points, where as the TSP  must return to the starting point.
+
+\section{1.1-5}
+The best solution would be any measurement of medicine, not enough then the disease is not cured, too much and patient dies.
+Ordering pizza approximately for a birthday party would be best, not guaranteed that every child will eat nor will every child eat the recommended amount.
+
+\section{1.2-1}
+Any search engine, Google for example has an algorithm to determine the probability that someone will type, for example, "How to program" and display relevant material on that subject. 
+
+\section{1.2-2}
+$8n^2<=64nlogn$ \newline
+$n^2<=8nlogn$ \newline
+$n<=8logn$ \newline 
+$n-8logn=0$ \newline
+$n=43.411$ \newline
+Insertion sort is better than merge sort when $n<=43$
+
+\section{1.2-3}
+We must find the smallest $n>0$ such that $100n^2<2^n$. Using a calculator, I substituted N with multiples of 10 until $100n^2<2^n$. This showed me that the smallest value of n was between 10 and 20. After substituting n with every number between 10 and 20 starting with 11, I found that n must be 15 for $100n^2$ to run faster than $2^n$.
+
+\end{document}

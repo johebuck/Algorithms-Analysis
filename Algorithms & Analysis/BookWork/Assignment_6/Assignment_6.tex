@@ -1,0 +1,87 @@
+\documentclass[12pt]{article}
+
+%Packages add more power to LaTeX documents
+\usepackage{fullpage} %Otherwise there will be a lot of wasted space at the margins
+\usepackage{enumerate} %For the multi-part problem in example #4
+\usepackage{amsthm} %For proof environment
+\usepackage{amsmath} %For math symbols (like the black square)
+\usepackage{graphicx,float,wrapfig} %Including graphics like PDFs and some image formats.
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+\author{John E. Buckley III}
+\title{CSCI 430: Homework 6}
+
+
+\begin{document}
+\maketitle
+
+\section{4.1-1}
+FIND-MAX-SUBARRAY is supposed to find the subarray with the maximum sum, however if all elements in A are negative then FIND-MAX-SUBARRAY will return the max single negative number.
+
+\section{4.1-2}
+Maximum-Subarray(A, low, high) \newline
+\tab left=0 \newline
+\tab right=0 \newline
+\tab sum=-$\infty$ \newline
+\tab for i=low to high \newline
+\tab \tab newsum=0 \newline
+\tab \tab for j=i to high \newline
+\tab \tab \tab newsum+=A[j] \newline
+\tab \tab \tab if newsum>sum \newline
+\tab \tab \tab \tab sum=newsum \newline
+\tab \tab \tab \tab left=i \newline
+\tab \tab \tab \tab right=j \newline
+return(left, right, sum)
+
+\section{4.1-4}
+If the sum of the maximum subarray is negative, then return the empty subarray.
+
+\section{4.3-1}
+Let us assume $T(n)\leq cn^2$ for some c. we get: \newline
+$T(n)\leq c(n-1)^2+n=cn^2-2cn+c+n$ \newline
+and if we pick c=1, we get: \newline
+$n^2-2n+1+n=n^2-n+1\leq n^2$ for $n\geq 1$ \newline
+Hence, $T(n)=T(n-1)+n$ is $O(n^2).$
+
+\section{4.3-2}
+Let us assume $T(n)\leq clg(n-1)$ we get: \newline
+$T(n)\leq clg([n/2]-a)+1$ \newline
+\tab $\leq clg([\frac{n+1}{2}]-a)+1$ \newline
+\tab $=clg(n+1-2a)-c+1$ \newline
+\tab $\leq clg(n-a)-c+1$ for $(a\geq \frac{1}{3})$ \newline
+\tab $\leq clg(n-a)$ for $(c\geq 1)$ \newline
+Hence, $T(n)=T([n/2])+1 is O(lgn)$.
+
+\section{4.3-3}
+Lets suppose $T(n)\geq cnlgn$ \newline
+$T(n)\geq 2c(\frac{n}{2})lg(\frac{n}{2})+n$ \newline
+\tab $=cnlgn-cn+n$ \newline
+\tab $\geq cnlgn$ for $(c\leq 1)$ \newline
+Hence this recurrence is also $\Omega(nlgn)$ and if the upper and lower bounds are both $nlgn$ then the "exact" bound is also nlgn $(\Theta(nlgn))$.
+
+\section{4.5-1}
+$n=n^{\frac{1}{2}}$ because a=2 and b=4 for all occurrences. \newline
+\begin{enumerate}
+\item $f(n)=O(1)=O(n^{\frac{1}{2}-\frac{1}{2}})$ which is case 1 of the master method hence, $T(n)=\Theta(n^{\frac{1}{2}})$
+\item $f(n)=O(n^{\frac{1}{2}})$ which is case 2 of the master method hence, $T(n)=\Theta(n^{\frac{1}{2}}lgn)$
+\item $f(n)=O(n)=O(n^{\frac{1}{2}+\frac{1}{2}})$ which is case 3 of the master method hence, $T(n)=\Theta(n)$
+\item $f(n)=O(n^2)=O(n^{\frac{1}{2}+\frac{3}{2}})$ which is also case 3 of the master method hence, $T(n)=\Theta(n^2)$
+
+\section{4.5-2}
+The running time for Strassen's algorithm is $\Theta(n^{lg7})$ Professor Caesar's running time for his algorithm, in the worst case, is: $T(n)=\Theta(n^{lg_ba})=\Theta(n^{lg_4a})=\Theta(n^{lg_2\sqrt{a}})$. \newline
+For the professors algorithm to be smaller than Strassens then $n^{lg\sqrt{a}}$ must be smaller than $n^{lg7}$: \newline
+$n^{lg\sqrt{a}}<n^{lg7}$ \newline
+$lg\sqrt{a}<lg7$ \newline
+$\sqrt{a}<7$ \newline
+$a<49$ The largest integer value of a is 48 \newline
+Hence, the professor's algorithm is faster than Strassens when a<48.
+
+\section{4.5-3}
+In the given recurrence a=1 and b=2. Hence, $n^{lg_21}=1 \rightarrow T(n)=lgn$ Thus, $T(n)=T(n/2)+\Theta(1)$ is $T(n)=\Theta(lgn)$
+
+\section{Non-Chapter}
+Don't see anything about the tabular method in my notes? May have missed it on the only day I was absent. All I could find online was Quine–McCluskey algorithm but it doesn't look like anything covered in class. 
+
+\end{enumerate}
+
+\end{document}

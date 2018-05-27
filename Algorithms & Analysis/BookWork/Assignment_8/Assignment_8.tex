@@ -1,0 +1,54 @@
+\documentclass[12pt]{article}
+
+%Packages add more power to LaTeX documents
+\usepackage{fullpage} %Otherwise there will be a lot of wasted space at the margins
+\usepackage{enumerate} %For the multi-part problem in example #4
+\usepackage{amsthm} %For proof environment
+\usepackage{amsmath} %For math symbols (like the black square)
+\usepackage{graphicx,float,wrapfig} %Including graphics like PDFs and some image formats.
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+\author{John E. Buckley III}
+\title{CSCI 430: Homework 7}
+
+
+\begin{document}
+\maketitle
+
+\section{7.1-3}
+The lines of code within the for loop for partition are executed r-p-1 times, which makes the running time a+bn=$\Theta(n)$
+
+\section{7.2-1}
+Let us represent $\Theta(n)$ as $C_2n$ and assume that T9n))$\leq$ $c_1n^2$ \newline
+\tab T(n)=T(n-1)+$c_2n$ \newline
+\tab \tab $leq c_1(n-1)^2+C_2n$ \newline
+\tab ]tab =$C_1n^2-2c_1n+c_1+C_2n$ \newline 
+\tab \tab $leq c_1n^2$
+
+\section{7.2-2}
+If array A contains elements of the same value then the partition will return q=r which means that the problem with size n is reduced to the size n-1. Thus T(n)=T(n-1)+n and by the iteration method: T9n)=$\Theta(n^2)$
+
+\section{7.2-3}
+In this case, the pivot will always be the smallest element. Each partition will produce two subarrays, one will only contain the smallest element, and the other will contain the remaining elements. Thus, T(n)=T(n-1)+n = $\Theta(n^2)$
+
+\section{7.2-4}
+InsertionSort does less work the more sorted the array is, in other words will be faster the more sorted the array is. InsertionSort is $\Theta(n+d)$ where d is the number of inversions in the array and the example in the problem tends to have a small number of inversions thus InsertionSort will be closer to linear than QuickSort.
+
+\section{7.3-1}
+We are not interested in the worst-case running time because it is triggered randomly and we can not reproduce it reliably, however we still factor it into the analysis of the expected running time.
+
+\section{7.3-2}
+\textbf{Worst Case:} T(n)=T(n-1)+1=n=$\Theta(n)$ \newline
+\textbf{Best Case:} T(n)=2T($\frac{n}{2})+1=\Theta(n)$
+
+\section{7.4-2}
+QuickSorts best case running time happens when the partition is even: T(n)=2T(n$\frac{n}{2}$)+$\Theta(n)$ and using the sweet sweet master method, we get $\Theta(nlgn)$
+
+\section{7.4-5}
+\textbf{In theory:} If k is too large then the cost of InsertionSort becomes larger than $\Theta(nlgn)$ thus k must be $O(lgn)$ \newline
+\textbf{In Practice:} $O(nk+nlg(\frac{n}{k}))=O(nlgn)$. We have constant facotrs $c_1$ and $c_2$ for QuickSort and InsertionSort. k must be chosen s.t. $c_2nk+c_1nlg(\frac{n}{k})$<$c_1nlgn$.\newline
+$\rightarrow$ $c_2nk+c_1n(lgn-lgk)$<$c_1nlgn$ \newline
+$\rightarrow$ $C_2k$<$c_1lgk$ \newline
+k just so happens should be chosen experimentally.
+
+\end{document}
